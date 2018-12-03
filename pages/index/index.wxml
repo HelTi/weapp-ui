@@ -1,0 +1,17 @@
+<!-- index.wxml -->
+<view class="container">
+    <view>组件</view>
+    <view>
+        <view bindtap='triggerShow'>transition</view>
+    </view>
+    <view>
+        <van-transition name="slide-left" show="{{ show }}" custom-style="{{t_style}}" custom-class="block">内容</van-transition>
+    </view>
+    <view>
+        <z-popup position="bottom" show="{{ show }}" bind:close="onClose">
+            <view class='detail-popup'>
+                popup
+            </view>
+        </z-popup>
+    </view>
+</view>

@@ -1,0 +1,8 @@
+/**index.wxss**/
+.block{
+    color: #d7d7d7;
+}
+
+.detail-popup{
+    min-height: 300rpx;
+}
