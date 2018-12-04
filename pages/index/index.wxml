@@ -8,6 +8,10 @@
         <van-transition name="slide-left" show="{{ show }}" custom-style="{{t_style}}" custom-class="block">内容</van-transition>
     </view>
     <view>
+        <z-loading />
+        <z-loading type="spinner" color="#dedede" />
+    </view>
+    <view>
         <z-popup position="bottom" show="{{ show }}" bind:close="onClose">
             <view class='detail-popup'>
                 popup

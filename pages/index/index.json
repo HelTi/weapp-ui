@@ -2,6 +2,7 @@
     "usingComponents": {
         "van-transition": "../../components/transition/transition",
         "z-overlay": "../../components/overlay/overlay",
-        "z-popup": "../../components/popup/popup"
+        "z-popup": "../../components/popup/popup",
+        "z-loading": "../../components/loading/index"
     }
 }
