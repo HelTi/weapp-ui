@@ -12,6 +12,9 @@
         <z-loading type="spinner" color="#dedede" />
     </view>
     <view>
+        <z-switch checked="{{ checked }}" bind:change="onChange" />
+    </view>
+    <view>
         <z-popup position="bottom" show="{{ show }}" bind:close="onClose">
             <view class='detail-popup'>
                 popup

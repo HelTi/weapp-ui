@@ -5,7 +5,15 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        checked: Boolean,
+        checked: {
+            type: Boolean,
+            value: false,
+            observer: function(val) {
+                this.setData({
+                    value: val
+                })
+            }
+        },
         loading: Boolean,
         disabled: Boolean,
         activeColor: String,
@@ -15,14 +23,13 @@ Component({
             value: '30px'
         }
     },
-
-    data: {
-
-    },
     attached() {
         this.setData({
             value: this.data.checked
-        });
+        })
+
+        this.computedClasses()
+        this.computedStyle()
     },
 
     methods: {
@@ -37,10 +44,8 @@ Component({
         },
         computedClasses() {
             let computedClass = ['custom-class', 'van-switch']
-            if (this.data.checked) {
-                computedClass.concat(['van-switch--on', 'van-switch--disabled'])
-            }
-
+            this.data.checked && computedClass.push('van-switch--on')
+            this.data.disabled && computedClass.push('van-switch--disabled')
             let classStr = computedClass.join(' ')
             this.setData({
                 classes: classStr
@@ -50,6 +55,9 @@ Component({
             let backgroundColor = this.data.checked ? this.data.activeColor : this.data.inactiveColor
 
             let computedStyleStr = "font-size: " + this.data.size + "; " + (backgroundColor ? "background-color: " + backgroundColor : '')
+            this.setData({
+                style: computedStyleStr
+            })
         }
     }
 })

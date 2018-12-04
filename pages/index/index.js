@@ -5,7 +5,8 @@ const app = getApp()
 Page({
     data: {
         show: false,
-        t_style: 'font-size:18px;'
+        t_style: 'font-size:18px;',
+        checked: true
     },
     //事件处理函数
     onLoad: function() {
@@ -19,6 +20,15 @@ Page({
     onClose() {
         this.setData({
             show: false
+        });
+    },
+    onChange({
+        detail
+    }) {
+        // 需要手动对 checked 状态进行更新
+        console.log('de',detail)
+        this.setData({
+            checked: detail
         });
     }
 })
