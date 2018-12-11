@@ -4,6 +4,7 @@
         "z-overlay": "../../components/overlay/overlay",
         "z-popup": "../../components/popup/popup",
         "z-loading": "../../components/loading/index",
-        "z-switch": "../../components/switch/index"
+        "z-switch": "../../components/switch/index",
+        "z-slider": "../../components/slider/index"
     }
 }

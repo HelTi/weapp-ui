@@ -15,6 +15,9 @@
         <z-switch checked="{{ checked }}" bind:change="onChange" />
     </view>
     <view>
+        <z-slider value="50" bind:change="onSliderChange" />
+    </view>
+    <view>
         <z-popup position="bottom" show="{{ show }}" bind:close="onClose">
             <view class='detail-popup'>
                 popup

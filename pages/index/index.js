@@ -30,5 +30,12 @@ Page({
         this.setData({
             checked: detail
         });
+    },
+    onSliderChange(event) {
+        console.log('c',event)
+        wx.showToast({
+            icon: 'none',
+            title: `当前值：${event.detail}`
+        });
     }
 })
