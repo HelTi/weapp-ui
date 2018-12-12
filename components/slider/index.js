@@ -57,20 +57,16 @@ Component({
             return Math.round(Math.max(min, Math.min(value, max)) / step) * step
         },
         onTouchStart(event) {
-            console.log('event_st',event)
             if (this.data.disabled) return
             this.touchStart(event)
             this.startValue = this.format(this.data.value)
         },
         onTouchMove(event) {
-            console.log('tocuh_mv',event)
             var _this = this
-            console.log('_this',_this)
             if (this.data.disabled) return
             this.touchMove(event)
             this.getRect('.van-slider').then(rect => {
-                var diff = _this.deltax / rect.width * 100
-
+                var diff = _this.deltaX / rect.width * 100
                 _this.updateValue(_this.startValue + diff)
             })
         },
@@ -78,11 +74,10 @@ Component({
             if (this.data.disabled) return
             this.updateValue(this.data.value, true)
         },
-        onClick() {
+        onClick(event) {
             var _this2 = this;
-
             if (this.data.disabled) return;
-            this.getRect(function (rect) {
+            this.getRect('.van-slider').then(function (rect) {
                 var value = (event.detail.x - rect.left) / rect.width * 100;
 
                 _this2.updateValue(value, true);
