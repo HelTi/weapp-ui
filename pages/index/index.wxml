@@ -25,3 +25,6 @@
         </z-popup>
     </view>
 </view>
+<view>
+    <navigator url='/pages/scroll/index'>scroll</navigator>
+</view>

@@ -1,0 +1,15 @@
+/* pages/scroll/index.wxss */
+.black{
+    background-color: black;
+}
+
+.green{
+    background-color: green;
+}
+
+.blue{
+    background-color: blue;
+}
+.item{
+    height: 50px;
+}
