@@ -1,0 +1,11 @@
+<!--pages/nav/nav.wxml-->
+<view>
+    <view>nav</view>
+    <view>
+        <scroll-view scroll-x class="nav" scroll-left="{{scrollLeft}}" bindscroll="navScroll">
+            <view wx:for="{{navItems}}" wx:key="{{index}}" class='nav-item' bindtap='clickNavItem'>
+                菜单
+            </view>
+        </scroll-view>
+    </view>
+</view>

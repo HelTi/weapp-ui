@@ -27,4 +27,5 @@
 </view>
 <view>
     <navigator url='/pages/scroll/index'>scroll</navigator>
+    <navigator url='/pages/nav/nav'>nav</navigator>
 </view>

@@ -1,0 +1,11 @@
+/* pages/nav/nav.wxss */
+.nav{
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+}
+
+.nav .nav-item{
+    display: inline-block;
+    padding: 5px 20px;
+}
