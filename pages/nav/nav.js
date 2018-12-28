@@ -13,10 +13,23 @@ Page({
         console.log('e', e)
     },
     clickNavItem(e) {
-        console.log('item:e',e)
+        console.log('item:e', e)
+        let dataSet = e.currentTarget.dataset
+        let currentIndex = dataSet.index
+        this.computeCurrentNavItemPos(currentIndex)
+        const query = wx.createSelectorQuery()
+        query.select('#nav-scroll').boundingClientRect(function(rect) {
+            console.log('rect', rect)
+        }).exec()
         // this.setData({
         //     scrollLeft: 20
         // })
+    },
+    computeCurrentNavItemPos(itemIndex) {
+        const query = wx.createSelectorQuery()
+        query.select('#nav-item' + itemIndex).boundingClientRect(function(rect) {
+            console.log('navItemRect', rect)
+        }).exec()
     },
     /**
      * 生命周期函数--监听页面加载
