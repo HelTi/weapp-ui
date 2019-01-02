@@ -2,9 +2,9 @@
 <view>
     <view>nav</view>
     <view>
-        <scroll-view id='nav-scroll' scroll-x class="nav" scroll-left="{{scrollLeft}}" bindscroll="navScroll">
+        <scroll-view scroll-into-view="nav-item{{currentActiveIndex}}" scroll-with-animation="{{true}}" id='nav-scroll' scroll-x class="nav" scroll-left="{{navScrollLeft}}" bindscroll="navScroll">
             <view id="nav-item{{index}}" data-index="{{index}}" wx:for="{{navItems}}" wx:key="{{index}}" class='nav-item' bindtap='clickNavItem'>
-                菜单
+                {{item.name}}
             </view>
         </scroll-view>
     </view>

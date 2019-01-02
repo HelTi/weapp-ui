@@ -10,7 +10,9 @@ Page({
     },
     //事件处理函数
     onLoad: function() {
-
+        wx.navigateTo({
+            url: '/pages/nav/nav',
+        })
     },
     triggerShow() {
         this.setData({
