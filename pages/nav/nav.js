@@ -34,7 +34,7 @@ Page({
             },
         ],
         navScrollLeft: 0,
-        currentActiveItemIndex: 0
+        activeIndex: 0
     },
 
     navScroll(e) {
@@ -45,45 +45,37 @@ Page({
         let dataSet = e.currentTarget.dataset
         let currentIndex = dataSet.index
         this.setData({
-            currentActiveItemIndex: currentIndex
+            activeIndex: currentIndex
         })
 
-        const query = wx.createSelectorQuery()
-
-        let navWidth, tabWidth, navScrollLeft, tabOffsetLeft = e.currentTarget.offsetLeft;
-        let that = this
-
-        query.select('#nav-scroll').boundingClientRect(function(rect) {
-            navWidth = rect.width
-            navScrollLeft = that.data.navScrollLeft
-            //计算navItem
-            const query = wx.createSelectorQuery()
-            query.select('#nav-item' + currentIndex).boundingClientRect(function(rect) {
-                tabWidth = rect.width
-                that.navScrollIntoView(navScrollLeft, tabOffsetLeft - (navWidth - tabWidth) / 2)
-            }).exec()
-
-        }).exec()
+        this.navScrollIntoView()
     },
     computeCurrentNavItemPos(itemIndex) {
 
     },
-    navScrollIntoView(from, to) {
-        console.log('from', from)
-        console.log('to', to)
-        let navLeft = this.data.navScrollLeft + (to - from)
-        console.log('navLeft', navLeft)
-        this.setData({
-            navScrollLeft: navLeft
-        })
+    navScrollIntoView() {
+        let that = this
+        let activeIndex = this.data.activeIndex
+        wx.createSelectorQuery().select('#nav-scroll').boundingClientRect(function(rect) {
+            let navWidth = rect.width
 
+            const query = wx.createSelectorQuery()
+            query.selectAll('.nav-item').boundingClientRect(function(rects) {
+                let activeTabWidth = rects[activeIndex].width
+                let offsetLeft = rects.slice(0, activeIndex).reduce(function(prev, curr) {
+                    return prev + curr.width
+                }, 0)
+                that.setData({
+                    navScrollLeft: offsetLeft - (navWidth - activeTabWidth) / 2
+                });
+            }).exec()
+
+        }).exec()
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-
-    },
+    onLoad: function(options) {},
 
     /**
      * 生命周期函数--监听页面初次渲染完成
