@@ -10,5 +10,5 @@
 } 
 
 page{
-    padding: 20rpx;
+    /* padding: 20rpx; */
 }

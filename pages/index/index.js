@@ -6,13 +6,14 @@ Page({
     data: {
         show: false,
         t_style: 'font-size:18px;',
-        checked: true
+        checked: true,
+        notice_text: '今日要闻今日要闻今日要闻今日要闻今日要闻今日要闻今日要闻今日要闻今日要闻'
     },
     //事件处理函数
     onLoad: function() {
-        wx.navigateTo({
-            url: '/pages/nav/nav',
-        })
+        // wx.navigateTo({
+        //     url: '/pages/nav/nav',
+        // })
     },
     triggerShow() {
         this.setData({

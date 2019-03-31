@@ -24,6 +24,10 @@
             </view>
         </z-popup>
     </view>
+
+    <view>
+        <z-notice-bar text="{{notice_text}}" />
+    </view>
 </view>
 <view>
     <navigator url='/pages/scroll/index'>scroll</navigator>

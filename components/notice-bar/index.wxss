@@ -1,0 +1,24 @@
+/* components/notice-bar/index.wxss */
+
+.z-notice-bar {
+    display: -webkit-flex;
+    display: flex;
+    height: 40px;
+    font-size: 14px;
+    line-height: 24px;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.z-notice-bar__content-wrap {
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.z-notice-bar__content {
+    white-space: nowrap;
+    position: absolute;
+}

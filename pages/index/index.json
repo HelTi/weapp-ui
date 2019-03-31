@@ -5,6 +5,7 @@
         "z-popup": "../../components/popup/popup",
         "z-loading": "../../components/loading/index",
         "z-switch": "../../components/switch/index",
-        "z-slider": "../../components/slider/index"
+        "z-slider": "../../components/slider/index",
+        "z-notice-bar": "../../components/notice-bar/index"
     }
 }

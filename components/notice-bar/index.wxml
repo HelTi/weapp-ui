@@ -1,0 +1,11 @@
+<!--components/notice-bar/index.wxml-->
+<view wx:if="{{ show }}" class='z-notice-bar'>
+    <view class='z-notice-bar__content-wrap'>
+        <view class='z-notice-bar__content' animation="{{animationData}}">
+            {{text}}
+        </view>
+    </view>
+    <!-- <view class='text' animation="{{animationData}}">
+        text
+    </view> -->
+</view>
