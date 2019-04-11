@@ -1,8 +1,13 @@
 // components/notice-bar/index.js
+import {
+    basic
+} from '../mixins/basic.js'
+
 Component({
     /**
      * 组件的属性列表
      */
+    behaviors: [basic],
     properties: {
         text: {
             type: String,
@@ -44,37 +49,36 @@ Component({
      */
     methods: {
         init() {
-            console.log('init')
-            this.createSelectorQuery().select('.z-notice-bar__content-wrap').boundingClientRect(wraprect => {
-                this.createSelectorQuery().select('.z-notice-bar__content').boundingClientRect(conrect => {
-                    let content_wrap_width = this.content_wrap_width = wraprect.width,
-                        content_width = this.content_width = conrect.width;
-                    if (!content_wrap_width || !content_width) {
-                        return
-                    }
-                    //如果容器宽度小于内容宽度
-                    if (content_wrap_width < content_width) {
-                        //滚动
-                        console.log('滚动')
-                        let delay = this.data.delay
-                        const duration = (content_width / this.data.speed) * 1000;
-                        this.duration = duration;
+            Promise.all([
+                this.getRect('.z-notice-bar__content-wrap'),
+                this.getRect('.z-notice-bar__content')
+            ]).then(rects => {
+                const [wraprect, conrect] = rects
+                let content_wrap_width = this.content_wrap_width = wraprect.width,
+                    content_width = this.content_width = conrect.width;
+                if (!content_wrap_width || !content_width) {
+                    return
+                }
+                //如果容器宽度小于内容宽度
+                if (content_wrap_width < content_width) {
+                    //滚动
+                    let delay = this.data.delay
+                    const duration = (content_width / this.data.speed) * 1000;
+                    this.duration = duration;
 
-                        this.animation = wx.createAnimation({
-                            duration,
-                            timingFunction: 'linear',
-                            delay
-                        });
+                    this.animation = wx.createAnimation({
+                        duration,
+                        timingFunction: 'linear',
+                        delay
+                    });
 
-                        this.scrollAnimation()
-                    }
-                }).exec()
-            }).exec()
+                    this.scrollAnimation()
+                }
+            })
+
         },
         scrollAnimation() {
-            console.log('scrollAnimation')
             this.timer && clearInterval(this.timer)
-            console.log(this.content_wrap_width, this.content_width)
             // 动画初始位置
             this.setData({
                 animationData: this.resetAnimation
@@ -95,6 +99,9 @@ Component({
             this.timer = setTimeout(() => {
                 this.scrollAnimation()
             }, this.duration);
+        },
+        detached() {
+            this.timer && clearInterval(this.timer)
         }
     }
 })
